@@ -6,7 +6,7 @@ namespace insurance.Models;
 
 public partial class InsurancesContext : DbContext
 {
-       
+  
 
     public InsurancesContext(DbContextOptions<InsurancesContext> options)
         : base(options)
@@ -19,7 +19,7 @@ public partial class InsurancesContext : DbContext
 
     public virtual DbSet<Policy> Policies { get; set; }
 
-
+    
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -37,6 +37,10 @@ public partial class InsurancesContext : DbContext
             entity.Property(e => e.Name)
                 .HasMaxLength(100)
                 .HasColumnName("name");
+            entity.Property(e => e.Password)
+                .HasMaxLength(255)
+                .IsUnicode(false)
+                .HasColumnName("password");
             entity.Property(e => e.PhoneNumber).HasColumnName("phone_number");
         });
 

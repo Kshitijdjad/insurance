@@ -18,7 +18,7 @@ namespace Insurance.Controllers
 		[HttpGet("{id}")]
 		public async Task<IActionResult> Get(int id)
 		{
-			var policy = await _context.Policies.FindAsync(id);
+			var policy = await _context.Policies.FirstOrDefaultAsync(x=>x.EmpId==id);
 			if (policy == null)
 				return NotFound();
 			return Ok(policy);	
